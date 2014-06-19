@@ -1,9 +1,11 @@
-## The following functions code is an example to show the scoping functionality in R Programming
-## The function(s) when called with a matrix returns the inverse of the matrix from the cache is already exists
-## If not then it computes the inverse and stores in cache for future retrival.
+## The following functions code is an example to show the scoping functionality in R Programming.
+## The function(s) below are used to return the inverse of the matrix from the cache if already exists.
+## If not, then it computes the inverse and stores in cache for future retrival.
 
-## Function: makeCacheMatrix -> It caches the inverse of the matrix  
+## Function: makeCacheMatrix -> It caches the inverse of the matrix. 
+
 makeCacheMatrix <- function(x = matrix()) {
+  
   mymatrix <- NULL
   set <- function(y) {
     x <<- y
@@ -18,7 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Function:cacheSolve -> This function gets the inverse of the matrix cached if it already exists.
+## Function: cacheSolve -> This function gets the inverse of the matrix cached if it already exists.
 ##                        if not, then it computes the inverse and then sets the value of the cache.
 cacheSolve <- function(x, ...) {
   m <- x$getinverse()
@@ -29,7 +31,8 @@ cacheSolve <- function(x, ...) {
   else
   {
     message("Getting Un-cached data...")
-    m <- solve(x$get())
+    data <- x$get()
+    m <- solve(data)
     x$setinverse(m)
   }
   m
